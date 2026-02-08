@@ -140,13 +140,13 @@ const CONFIG = {
     {
       name: 'Linux Foundation, CKA',
       body: 'Certified Kubernetes Administrator',
-      year: '08/2023 - 08/2026',
+      year: 'August 2023 – August 2026',
       link: 'https://www.credly.com/badges/973927cf-5673-427b-b231-82632320005d/public_url',
     },
     {
       name: 'Amazon Web Services Training and Certification, CLF',
       body: 'AWS Certified Cloud Practitioner',
-      year: '03/2023 - 08/2026',
+      year: 'March 2023 - March 2026',
       link: 'https://www.credly.com/badges/5134e790-737d-4b40-b9ef-840765da09d0/public_url',
     },
   ],

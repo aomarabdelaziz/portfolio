@@ -109,7 +109,7 @@ const CONFIG = {
   experiences: [
     {
       company: 'b_labs & mylo',
-      position: 'Senior DevOps Software Engineer',
+      position: 'Senior DevOps Engineer',
       from: 'March 2024',
       to: 'Present',
       companyLink: 'https://myloapp.com/',

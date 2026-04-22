@@ -61,6 +61,7 @@
         const s = C.socials[key];
         return `<a href="${s.url}" ${key !== 'email' ? 'target="_blank"' : ''} title="${key}" style="padding:10px;border-radius:10px;border:1px solid rgba(128,128,128,0.15);color:inherit;opacity:0.6;transition:opacity 0.2s,border-color 0.2s;" onmouseover="this.style.opacity=1;this.style.borderColor='var(--primary)'" onmouseout="this.style.opacity=0.6;this.style.borderColor='rgba(128,128,128,0.15)'">${socialIcons[key]}</a>`;
       }).join('')}
+      ${C.calUrl ? `<a href="${C.calUrl}" target="_blank" title="Book a Call" style="padding:10px;border-radius:10px;border:1px solid rgba(128,128,128,0.15);color:inherit;opacity:0.6;transition:opacity 0.2s,border-color 0.2s;" onmouseover="this.style.opacity=1;this.style.borderColor='var(--primary)'" onmouseout="this.style.opacity=0.6;this.style.borderColor='rgba(128,128,128,0.15)'"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></a>` : ''}
     </div>
   `;
 
@@ -221,6 +222,15 @@
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
           </a>`;
       }).join('')}
+      ${C.calUrl ? `
+        <a href="${C.calUrl}" target="_blank" style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:14px;border:1px solid rgba(128,128,128,0.12);text-decoration:none;color:inherit;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(139,92,246,0.4)';this.style.background='rgba(139,92,246,0.04)'" onmouseout="this.style.borderColor='rgba(128,128,128,0.12)';this.style.background='transparent'">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(139,92,246,0.1);color:#8b5cf6;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <div style="flex:1;"><p style="font-weight:500;margin:0 0 2px;font-size:0.9rem;">Book a Call</p><p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;opacity:0.4;margin:0;">15 min meeting</p></div>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      ` : ''}
     </div>
     <p class="anim" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;opacity:0.3;margin-top:32px;text-align:center;transition-delay:0.2s;">
       📍 ${C.location}${C.relocate ? ' · Ready to relocate' : ''}
@@ -391,6 +401,8 @@ const CMDS = {
       ['experience', 'Work experience'],
       ['contact',    'Get in touch'],
       ['certs',      'Certifications'],
+      ['xo',         'Play Tic-Tac-Toe vs AI'],
+      ['rps',        'Play Rock Paper Scissors'],
       ['clear',      'Clear the terminal'],
       ['gui',        'Close terminal → go to site'],
     ];
@@ -483,6 +495,237 @@ const CMDS = {
     line('Switching to GUI mode...', '#22c55e');
     setTimeout(closeTerm, 600);
   },
+
+  xo() {
+    blank();
+    line('🎮 <span style="color:#22c55e;font-weight:600;">Tic-Tac-Toe</span>  <span style="color:#6b7280;">— You are X, AI is O</span>');
+    line('<span style="color:#6b7280;">Click a cell to play. Type <span style="color:#22c55e;">xo</span> again to restart.</span>');
+    blank();
+
+    const board = Array(9).fill('');
+    let gameOver = false;
+    const winCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+    // Create game container
+    const gameDiv = document.createElement('div');
+    gameDiv.style.cssText = 'display:inline-grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:4px 0 8px;';
+
+    const cells = [];
+    for (let i = 0; i < 9; i++) {
+      const cell = document.createElement('div');
+      cell.style.cssText = 'width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;cursor:pointer;font-size:1.4rem;font-weight:700;transition:all 0.15s;user-select:none;';
+      cell.dataset.index = i;
+      cell.addEventListener('mouseover', () => { if (!board[i] && !gameOver) cell.style.background = '#222'; });
+      cell.addEventListener('mouseout', () => { if (!board[i] && !gameOver) cell.style.background = '#1a1a1a'; });
+      cell.addEventListener('click', () => playerMove(i));
+      cells.push(cell);
+      gameDiv.appendChild(cell);
+    }
+
+    termOutput.appendChild(gameDiv);
+
+    const statusEl = document.createElement('p');
+    statusEl.style.cssText = 'margin:4px 0;padding:0;font-size:0.82rem;';
+    statusEl.innerHTML = '<span style="color:#22c55e;">Your turn (X)</span>';
+    termOutput.appendChild(statusEl);
+    termOutput.scrollTop = termOutput.scrollHeight;
+
+    function render() {
+      cells.forEach((cell, i) => {
+        if (board[i] === 'X') {
+          cell.textContent = 'X';
+          cell.style.color = '#22c55e';
+          cell.style.cursor = 'default';
+        } else if (board[i] === 'O') {
+          cell.textContent = 'O';
+          cell.style.color = '#f87171';
+          cell.style.cursor = 'default';
+        } else {
+          cell.textContent = '';
+          cell.style.cursor = gameOver ? 'default' : 'pointer';
+        }
+      });
+    }
+
+    function checkWin(player) {
+      return winCombos.find(combo => combo.every(i => board[i] === player));
+    }
+
+    function highlightWin(combo) {
+      combo.forEach(i => {
+        cells[i].style.background = board[i] === 'X' ? 'rgba(34,197,94,0.15)' : 'rgba(248,113,113,0.15)';
+        cells[i].style.borderColor = board[i] === 'X' ? '#22c55e' : '#f87171';
+      });
+    }
+
+    function isDraw() {
+      return board.every(c => c !== '');
+    }
+
+    // AI: minimax
+    function minimax(b, isMax, depth) {
+      const w = winCombos.find(c => c.every(i => b[i] === 'O'));
+      if (w) return 10 - depth;
+      const l = winCombos.find(c => c.every(i => b[i] === 'X'));
+      if (l) return depth - 10;
+      if (b.every(c => c !== '')) return 0;
+
+      if (isMax) {
+        let best = -Infinity;
+        for (let i = 0; i < 9; i++) {
+          if (!b[i]) { b[i] = 'O'; best = Math.max(best, minimax(b, false, depth + 1)); b[i] = ''; }
+        }
+        return best;
+      } else {
+        let best = Infinity;
+        for (let i = 0; i < 9; i++) {
+          if (!b[i]) { b[i] = 'X'; best = Math.min(best, minimax(b, true, depth + 1)); b[i] = ''; }
+        }
+        return best;
+      }
+    }
+
+    function aiMove() {
+      let bestScore = -Infinity, bestIdx = -1;
+      for (let i = 0; i < 9; i++) {
+        if (!board[i]) {
+          board[i] = 'O';
+          const score = minimax(board, false, 0);
+          board[i] = '';
+          if (score > bestScore) { bestScore = score; bestIdx = i; }
+        }
+      }
+      if (bestIdx >= 0) {
+        board[bestIdx] = 'O';
+        render();
+        const win = checkWin('O');
+        if (win) {
+          highlightWin(win);
+          gameOver = true;
+          statusEl.innerHTML = '<span style="color:#f87171;font-weight:600;">AI wins! 😈</span> <span style="color:#6b7280;">Type <span style="color:#22c55e;">xo</span> to play again.</span>';
+        } else if (isDraw()) {
+          gameOver = true;
+          statusEl.innerHTML = '<span style="color:#f59e0b;font-weight:600;">Draw! 🤝</span> <span style="color:#6b7280;">Type <span style="color:#22c55e;">xo</span> to play again.</span>';
+        } else {
+          statusEl.innerHTML = '<span style="color:#22c55e;">Your turn (X)</span>';
+        }
+      }
+    }
+
+    function playerMove(i) {
+      if (board[i] || gameOver) return;
+      board[i] = 'X';
+      render();
+      const win = checkWin('X');
+      if (win) {
+        highlightWin(win);
+        gameOver = true;
+        statusEl.innerHTML = '<span style="color:#22c55e;font-weight:600;">You win! 🎉</span> <span style="color:#6b7280;">Type <span style="color:#22c55e;">xo</span> to play again.</span>';
+        return;
+      }
+      if (isDraw()) {
+        gameOver = true;
+        statusEl.innerHTML = '<span style="color:#f59e0b;font-weight:600;">Draw! 🤝</span> <span style="color:#6b7280;">Type <span style="color:#22c55e;">xo</span> to play again.</span>';
+        return;
+      }
+      statusEl.innerHTML = '<span style="color:#f87171;">AI thinking...</span>';
+      setTimeout(aiMove, 300);
+    }
+
+    render();
+    termOutput.scrollTop = termOutput.scrollHeight;
+  },
+
+  rps() {
+    blank();
+    line('🎮 <span style="color:#22c55e;font-weight:600;">Rock Paper Scissors</span>  <span style="color:#6b7280;">— Best of luck!</span>');
+    blank();
+
+    let playerScore = 0, aiScore = 0, round = 0, playing = true;
+    const choices = [
+      { name: 'Rock',     emoji: '🪨' },
+      { name: 'Paper',    emoji: '📄' },
+      { name: 'Scissors', emoji: '✂️' },
+    ];
+
+    // Score display
+    const scoreEl = document.createElement('p');
+    scoreEl.style.cssText = 'margin:0 0 12px;padding:0;font-size:0.82rem;';
+    function updateScore() {
+      scoreEl.innerHTML = '<span style="color:#22c55e;font-weight:600;">You ' + playerScore + '</span>' +
+        ' <span style="color:#6b7280;">—</span> ' +
+        '<span style="color:#f87171;font-weight:600;">' + aiScore + ' AI</span>' +
+        '  <span style="color:#4b5563;">(Round ' + (round + 1) + ')</span>';
+    }
+    updateScore();
+    termOutput.appendChild(scoreEl);
+
+    // Buttons container
+    const btnRow = document.createElement('div');
+    btnRow.style.cssText = 'display:flex;gap:8px;margin:4px 0 8px;';
+
+    choices.forEach((c, i) => {
+      const btn = document.createElement('div');
+      btn.style.cssText = 'padding:12px 20px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;cursor:pointer;font-size:0.85rem;transition:all 0.15s;user-select:none;display:flex;align-items:center;gap:8px;';
+      btn.innerHTML = '<span style="font-size:1.2rem;">' + c.emoji + '</span><span style="color:#d1d5db;">' + c.name + '</span>';
+      btn.addEventListener('mouseover', () => { if (playing) { btn.style.background = '#222'; btn.style.borderColor = '#22c55e'; } });
+      btn.addEventListener('mouseout', () => { if (playing) { btn.style.background = '#1a1a1a'; btn.style.borderColor = '#2a2a2a'; } });
+      btn.addEventListener('click', () => playRound(i));
+      btnRow.appendChild(btn);
+    });
+    termOutput.appendChild(btnRow);
+
+    // Result area
+    const resultEl = document.createElement('p');
+    resultEl.style.cssText = 'margin:0;padding:0;font-size:0.82rem;min-height:1.5em;';
+    resultEl.innerHTML = '<span style="color:#6b7280;">Choose your weapon...</span>';
+    termOutput.appendChild(resultEl);
+
+    const historyEl = document.createElement('div');
+    historyEl.style.cssText = 'margin:8px 0 4px;';
+    termOutput.appendChild(historyEl);
+
+    termOutput.scrollTop = termOutput.scrollHeight;
+
+    function playRound(playerIdx) {
+      if (!playing) return;
+      playing = false;
+
+      const aiIdx = Math.floor(Math.random() * 3);
+      const pc = choices[playerIdx];
+      const ac = choices[aiIdx];
+
+      resultEl.innerHTML = '<span style="color:#f59e0b;">AI choosing...</span>';
+
+      setTimeout(() => {
+        let result, color;
+        if (playerIdx === aiIdx) {
+          result = "Draw!"; color = '#f59e0b';
+        } else if ((playerIdx === 0 && aiIdx === 2) || (playerIdx === 1 && aiIdx === 0) || (playerIdx === 2 && aiIdx === 1)) {
+          result = "You win!"; color = '#22c55e'; playerScore++;
+        } else {
+          result = "AI wins!"; color = '#f87171'; aiScore++;
+        }
+
+        resultEl.innerHTML =
+          '<span style="color:#22c55e;">' + pc.emoji + ' ' + pc.name + '</span>' +
+          ' <span style="color:#6b7280;">vs</span> ' +
+          '<span style="color:#f87171;">' + ac.emoji + ' ' + ac.name + '</span>' +
+          '  →  <span style="color:' + color + ';font-weight:600;">' + result + '</span>';
+
+        // Add to history
+        const hLine = document.createElement('p');
+        hLine.style.cssText = 'margin:0;padding:0;font-size:0.72rem;color:#4b5563;';
+        hLine.innerHTML = 'R' + (round + 1) + ': ' + pc.emoji + ' vs ' + ac.emoji + ' → <span style="color:' + color + ';">' + result + '</span>';
+        historyEl.appendChild(hLine);
+
+        round++;
+        updateScore();
+        playing = true;
+        termOutput.scrollTop = termOutput.scrollHeight;
+      }, 500);
+    }
+  },
 };
 
 // ── Command runner ────────────────────────────────────────
@@ -503,9 +746,80 @@ function runCmd(raw, showPrompt = true) {
   }
 }
 
+// ── Autocomplete ──────────────────────────────────────────
+const termAC = document.getElementById('term-autocomplete');
+const cmdNames = Object.keys(CMDS);
+let acIndex = -1;
+
+function updateAutocomplete() {
+  const val = termInput.value.trim().toLowerCase();
+  if (!val) { hideAC(); return; }
+  const matches = cmdNames.filter(c => c.startsWith(val) && c !== val);
+  if (matches.length === 0) { hideAC(); return; }
+  acIndex = -1;
+  termAC.innerHTML = matches.map((m, i) => {
+    const matched = m.slice(0, val.length);
+    const rest = m.slice(val.length);
+    return `<div class="ac-item" data-cmd="${m}" data-index="${i}" style="padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background 0.1s;" onmouseover="highlightAC(${i})" onclick="selectAC('${m}')">
+      <span style="color:#22c55e;font-size:0.75rem;">$</span>
+      <span><span style="color:#86efac;">${matched}</span><span style="color:#6b7280;">${rest}</span></span>
+    </div>`;
+  }).join('');
+  termAC.style.display = 'block';
+}
+
+function hideAC() {
+  termAC.style.display = 'none';
+  termAC.innerHTML = '';
+  acIndex = -1;
+}
+
+function highlightAC(idx) {
+  const items = termAC.querySelectorAll('.ac-item');
+  items.forEach((el, i) => {
+    el.style.background = i === idx ? '#222' : 'transparent';
+  });
+  acIndex = idx;
+}
+
+function selectAC(cmd) {
+  termInput.value = cmd;
+  hideAC();
+  termInput.focus();
+}
+
+function navigateAC(dir) {
+  const items = termAC.querySelectorAll('.ac-item');
+  if (items.length === 0) return false;
+  acIndex += dir;
+  if (acIndex < 0) acIndex = items.length - 1;
+  if (acIndex >= items.length) acIndex = 0;
+  highlightAC(acIndex);
+  termInput.value = items[acIndex].dataset.cmd;
+  return true;
+}
+
+termInput.addEventListener('input', updateAutocomplete);
+
 // ── Input key handling ────────────────────────────────────
 termInput.addEventListener('keydown', e => {
+  // Autocomplete navigation
+  if (termAC.style.display === 'block') {
+    if (e.key === 'ArrowDown') { e.preventDefault(); navigateAC(1); return; }
+    if (e.key === 'ArrowUp') { e.preventDefault(); navigateAC(-1); return; }
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const items = termAC.querySelectorAll('.ac-item');
+      if (items.length === 1) { selectAC(items[0].dataset.cmd); }
+      else if (acIndex >= 0) { selectAC(items[acIndex].dataset.cmd); }
+      else { navigateAC(1); }
+      return;
+    }
+    if (e.key === 'Escape') { hideAC(); return; }
+  }
+
   if (e.key === 'Enter') {
+    hideAC();
     const val = termInput.value;
     if (val.trim()) { cmdHistory.unshift(val); histIdx = -1; }
     runCmd(val);
@@ -516,6 +830,14 @@ termInput.addEventListener('keydown', e => {
   } else if (e.key === 'ArrowDown') {
     e.preventDefault();
     histIdx > 0 ? termInput.value = cmdHistory[--histIdx] : (termInput.value = '', histIdx = -1);
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    // Tab-complete when dropdown is hidden but there's a match
+    const val = termInput.value.trim().toLowerCase();
+    if (val) {
+      const matches = cmdNames.filter(c => c.startsWith(val));
+      if (matches.length === 1) termInput.value = matches[0];
+    }
   }
 });
 

@@ -14,6 +14,7 @@ const CONFIG = {
   location: 'Alexandria, Egypt',
   relocate: true,
   resumeUrl: 'https://aomarabdelaziz.github.io/CV/Abdelaziz%20Omar%20Abdelaziz%20Omar%20CV.pdf',
+  calUrl: 'https://cal.com/abdelaziz-omar/15min',
 
   // ── Hero Section ───────────────────────────────────────
   heroGreeting: 'Hello World 👋',

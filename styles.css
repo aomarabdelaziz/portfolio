@@ -1,0 +1,117 @@
+/* ── Theme variables ── */
+:root {
+  --background: #f9f9f9;
+  --foreground: #101011;
+  --primary: #2563eb;
+  --primary-rgb: 37,99,235;
+}
+.dark {
+  --background: #090909;
+  --foreground: #f1f1f1;
+  --primary: #3b82f6;
+  --primary-rgb: 59,130,246;
+}
+
+/* ── Base reset ── */
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+}
+
+/* ── Utility colour helpers ── */
+.text-primary   { color: var(--primary); }
+.bg-primary     { background-color: var(--primary); }
+.border-primary { border-color: var(--primary); }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+/* ── Typing cursor on hero ── */
+#typing-text::after {
+  content: '|';
+  color: var(--primary);
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Keyframes ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll-reveal animation ── */
+.anim         { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.anim.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Section default padding ── */
+section { padding: 96px 0; }
+
+/* ── Experience card hover glow ── */
+.card:hover {
+  box-shadow:
+    0 0 0 1px rgba(var(--primary-rgb), 0.3),
+    0 8px 32px rgba(var(--primary-rgb), 0.08);
+}
+
+/* ── Skill icon dark-mode invert ── */
+.dark .icon-invert { filter: invert(1); }
+
+/* ── Timeline vertical line ── */
+.tl-line {
+  position: absolute;
+  left: 7px;
+  top: 20px;
+  bottom: 0;
+  width: 1px;
+  background: rgba(var(--primary-rgb), 0.2);
+}
+
+/* ── Active nav link ── */
+.nav-link.active { color: var(--primary); opacity: 1; }
+
+/* ── Hero decorative blobs ── */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* ── Hidden utility (used by theme toggle icons) ── */
+.hidden { display: none !important; }
+
+/* ── Experience timeline ── */
+.tl-entry {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  margin-bottom: 56px;
+  align-items: center;
+}
+.tl-card { border-radius: 14px; border: 1px solid rgba(128,128,128,0.12); padding: 24px; transition: all 0.3s ease; cursor: default; }
+.tl-dot  { display: flex; align-items: center; justify-content: center; z-index: 1; }
+
+@media (max-width: 640px) {
+  .tl-center-line { display: none; }
+  .tl-entry { grid-template-columns: 1fr; }
+  .tl-dot   { display: none; }
+  .tl-right-col, .tl-left-col { grid-column: 1; text-align: left !important; }
+  .tl-right-col .tl-tags { justify-content: flex-start !important; }
+  .tl-left-col  .tl-tags { justify-content: flex-start !important; }
+  .tl-spacer { display: none; }
+}

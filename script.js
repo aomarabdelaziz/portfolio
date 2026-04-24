@@ -232,7 +232,7 @@
         </a>
       ` : ''}
     </div>
-    <p class="anim" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;opacity:0.3;margin-top:32px;text-align:center;transition-delay:0.2s;">
+    <p class="anim" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem  ;margin-top:32px;text-align:center;transition-delay:0.2s;">
       📍 ${C.location}${C.relocate ? ' · Ready to relocate' : ''}
     </p>
   `;
@@ -286,7 +286,7 @@ function logoTick() {
   }
   setTimeout(logoTick, ld ? 60 : 110);
 }
-logoTick();
+//logoTick();
 
 // ── Hero typing animation ─────────────────────────────────
 const roles = CONFIG.typingRoles;

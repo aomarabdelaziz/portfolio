@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "cv": "node generate-cv.js",
+    "cv:pdf": "node generate-cv.js --pdf"
+  },
   "dependencies": {
     "docx": "^9.6.1"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.15.0"
   }
 }

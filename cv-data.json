@@ -1,0 +1,191 @@
+{
+  "_meta": {
+    "sections": [
+      "summary",
+      "experience",
+      "education",
+      "certifications",
+      "skills",
+      "training",
+      "languages"
+    ]
+  },
+  "personal": {
+    "name": "ABDELAZIZ OMAR",
+    "title": "Senior DevOps Engineer",
+    "phone": "(+20) 01027588498",
+    "email": "abdelazizomardev@gmail.com",
+    "location": "Alexandria, Egypt",
+    "location_note": "Open to Relocation",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/aomarabdelaziz",
+        "display": "linkedin.com/in/aomarabdelaziz"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/aomarabdelaziz",
+        "display": "github.com/aomarabdelaziz"
+      },
+      {
+        "label": "Portfolio",
+        "url": "https://aomarabdelaziz.github.io",
+        "display": "portfolio"
+      }
+    ]
+  },
+  "summary": "Motivated DevOps Engineer with a strong focus on infrastructure reliability, scalability, and security. Experienced in designing and automating CI/CD pipelines, managing cloud environments on AWS, and implementing GitOps and Infrastructure-as-Code practices. Proven ability to reduce operational errors and deliver resilient platforms across hybrid and cloud-native environments.",
+  "experience": [
+    {
+      "title": "Senior DevOps Engineer",
+      "company": "B.TECH (b_labs & mylo)",
+      "location": "Cairo, Egypt",
+      "start": "04/2024",
+      "end": "Present",
+      "highlights": [
+        "Automated software configuration and deployments using Amazon EKS, Helm, Argo CD, GitHub Actions, and Terraform, enabling GitOps workflows across multiple environments.",
+        "Worked with Huawei Cloud and AWS Outposts to support hybrid cloud deployments, bridging on-premises and cloud infrastructure.",
+        "Delivered resilient and scalable platforms through Infrastructure-as-Code (IaC) practices, reducing manual configuration and improving deployment consistency.",
+        "Collaborated with development teams to streamline release pipelines and enforce best practices in CI/CD automation."
+      ]
+    },
+    {
+      "title": "DevOps Engineer",
+      "company": "Integrated Solutions For Ports (ISFP)",
+      "location": "Alexandria, Egypt",
+      "start": "04/2023",
+      "end": "03/2024",
+      "highlights": [
+        "Implemented customer integrations and system automation using Ansible, Jenkins, Docker, and Linux, improving deployment speed and reliability.",
+        "Built and maintained CI/CD pipelines that reduced operational errors and standardized the software delivery process.",
+        "Investigated and resolved production issues in containerized environments, minimizing downtime and service disruption.",
+        "Automated repetitive infrastructure tasks, freeing engineering capacity for higher-value work."
+      ]
+    },
+    {
+      "title": "Backend Engineer (PHP/Laravel)",
+      "company": "Arabic Localizer",
+      "location": "Alexandria, Egypt",
+      "start": "08/2021",
+      "end": "10/2022",
+      "highlights": [
+        "Maintained and improved the company website, fixing bugs and ensuring uptime.",
+        "Refactored legacy code sections to improve maintainability and readability.",
+        "Optimized MySQL query performance, reducing page load times and improving application responsiveness."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Diploma in Information Technology",
+      "institution": "Information Technology Institute (ITI)",
+      "start": "11/2022",
+      "end": "03/2023"
+    },
+    {
+      "degree": "B.Sc. in Agricultural Economics",
+      "institution": "Faculty of Agriculture, Alexandria University",
+      "start": "07/2017",
+      "end": "07/2021",
+      "grade": "Good",
+      "project": "Graduation Project: Excellent"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Solutions Architect - Associate (SAA-C03)",
+      "issuer": "Amazon Web Services Training and Certification",
+      "start": "04/2026",
+      "end": "04/2029"
+    },
+    {
+      "name": "Certified Kubernetes Administrator (CKA)",
+      "issuer": "The Linux Foundation",
+      "start": "03/2023",
+      "end": "03/2026"
+    },
+    {
+      "name": "AWS Certified Cloud Practitioner (CLF-C02)",
+      "issuer": "Amazon Web Services Training and Certification",
+      "start": "08/2023",
+      "end": "08/2026"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Cloud Providers",
+      "items": ["AWS (EC2, EKS, S3, VPC, IAM, Outposts, CloudWatch, Lambda, SNS/SQS, API Gateway)"]
+    },
+    {
+      "category": "Containerization & Orchestration",
+      "items": ["Docker", "Kubernetes", "Helm"]
+    },
+    {
+      "category": "CI/CD Tools",
+      "items": ["Jenkins", "Argo CD", "GitHub Actions"]
+    },
+    {
+      "category": "Infrastructure as Code",
+      "items": ["Terraform"]
+    },
+    {
+      "category": "Configuration Management",
+      "items": ["Ansible"]
+    },
+    {
+      "category": "Observability",
+      "items": ["Prometheus", "Grafana", "Loki", "OpenTelemetry"]
+    },
+    {
+      "category": "Version Control",
+      "items": ["Git", "GitHub"]
+    },
+    {
+      "category": "Web Servers",
+      "items": ["Nginx"]
+    },
+    {
+      "category": "Repository Management",
+      "items": ["Nexus"]
+    },
+    {
+      "category": "Operating Systems",
+      "items": ["Linux (Ubuntu, CentOS)", "Windows"]
+    },
+    {
+      "category": "Programming & Scripting",
+      "items": ["Python", "Bash Script"]
+    }
+  ],
+  "training": [
+    {
+      "name": "Backend Developer Internship (PHP / Laravel / MySQL)",
+      "institution": "Route Academy",
+      "start": "02/2022",
+      "end": "05/2022"
+    },
+    {
+      "name": "Software IT Fundamentals",
+      "institution": "National Telecommunication Institute (NTI)",
+      "start": "04/2022",
+      "end": "05/2022"
+    },
+    {
+      "name": "Full-Stack Web Development",
+      "institution": "Ministry of Communication and Information Technology",
+      "start": "09/2020",
+      "end": "11/2020"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Arabic",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "B1 - Intermediate"
+    }
+  ]
+}

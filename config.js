@@ -13,7 +13,7 @@ const CONFIG = {
   title: 'Senior DevOps Engineer',
   location: 'Alexandria, Egypt',
   relocate: true,
-  resumeUrl: 'https://aomarabdelaziz.github.io/CV/Abdelaziz%20Omar%20Abdelaziz%20Omar%20CV.pdf',
+  resumeUrl: 'resume.html',
   calUrl: 'https://cal.com/abdelaziz-omar/15min',
 
   // ── Hero Section ───────────────────────────────────────

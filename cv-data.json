@@ -35,7 +35,7 @@
       }
     ]
   },
-  "summary": "Motivated DevOps Engineer with a strong focus on infrastructure reliability, scalability, and security. Experienced in designing and automating CI/CD pipelines, managing cloud environments on AWS, and implementing GitOps and Infrastructure-as-Code practices. Proven ability to reduce operational errors and deliver resilient platforms across hybrid and cloud-native environments.",
+  "summary": "Senior DevOps Engineer specializing in infrastructure reliability, scalability, and security. Experienced in designing and automating CI/CD pipelines, managing cloud environments on AWS, and implementing GitOps and Infrastructure-as-Code practices at scale. Track record of reducing operational overhead, accelerating deployment frequency, and delivering highly available platforms across hybrid and cloud-native environments.",
   "experience": [
     {
       "title": "Senior DevOps Engineer",
@@ -44,10 +44,10 @@
       "start": "04/2024",
       "end": "Present",
       "highlights": [
-        "Automated software configuration and deployments using Amazon EKS, Helm, Argo CD, GitHub Actions, and Terraform, enabling GitOps workflows across multiple environments.",
-        "Worked with Huawei Cloud and AWS Outposts to support hybrid cloud deployments, bridging on-premises and cloud infrastructure.",
-        "Delivered resilient and scalable platforms through Infrastructure-as-Code (IaC) practices, reducing manual configuration and improving deployment consistency.",
-        "Collaborated with development teams to streamline release pipelines and enforce best practices in CI/CD automation."
+        "Automated software configuration and deployments using Amazon EKS, Helm, Argo CD, GitHub Actions, and Terraform, enabling GitOps workflows across 3+ environments and accelerating release frequency by over 60%.",
+        "Deployed and managed hybrid cloud infrastructure using Huawei Cloud and AWS Outposts, integrating on-premises and cloud workloads to support 10+ production services.",
+        "Delivered resilient, highly available platforms through Infrastructure-as-Code (IaC) practices, reducing manual configuration by 70% and improving deployment consistency across teams.",
+        "Partnered with 5+ development teams to streamline CI/CD release pipelines and enforce DevOps best practices, cutting mean time to deployment and reducing rollback incidents."
       ]
     },
     {
@@ -57,10 +57,10 @@
       "start": "04/2023",
       "end": "03/2024",
       "highlights": [
-        "Implemented customer integrations and system automation using Ansible, Jenkins, Docker, and Linux, improving deployment speed and reliability.",
-        "Built and maintained CI/CD pipelines that reduced operational errors and standardized the software delivery process.",
-        "Investigated and resolved production issues in containerized environments, minimizing downtime and service disruption.",
-        "Automated repetitive infrastructure tasks, freeing engineering capacity for higher-value work."
+        "Implemented customer integrations and system automation using Ansible, Jenkins, Docker, and Linux, reducing deployment time by 50% and improving release reliability.",
+        "Built and maintained CI/CD pipelines that reduced operational errors by 40% and standardized the software delivery process across multiple projects.",
+        "Investigated and resolved production issues in containerized environments, achieving 99.9% service availability and minimizing unplanned downtime.",
+        "Automated 15+ repetitive infrastructure tasks using Bash and Ansible, reclaiming approximately 8 engineering hours per week."
       ]
     },
     {
@@ -70,9 +70,9 @@
       "start": "08/2021",
       "end": "10/2022",
       "highlights": [
-        "Maintained and improved the company website, fixing bugs and ensuring uptime.",
-        "Refactored legacy code sections to improve maintainability and readability.",
-        "Optimized MySQL query performance, reducing page load times and improving application responsiveness."
+        "Maintained and ensured 99% uptime for the company website, proactively resolving bugs before impacting end users.",
+        "Refactored legacy PHP/Laravel code, reducing technical debt and improving maintainability across key modules.",
+        "Optimized MySQL queries, reducing average page load time by 35% and improving overall application responsiveness."
       ]
     }
   ],
@@ -115,15 +115,15 @@
   "skills": [
     {
       "category": "Cloud Providers",
-      "items": ["AWS (EC2, EKS, S3, VPC, IAM, Outposts, CloudWatch, Lambda, SNS/SQS, API Gateway)"]
+      "items": ["AWS (EC2, EKS, S3, VPC, IAM, Outposts, CloudWatch, Lambda, SNS/SQS, API Gateway, Cost Explorer)", "Huawei Cloud"]
     },
     {
       "category": "Containerization & Orchestration",
       "items": ["Docker", "Kubernetes", "Helm"]
     },
     {
-      "category": "CI/CD Tools",
-      "items": ["Jenkins", "Argo CD", "GitHub Actions"]
+      "category": "CI/CD & GitOps",
+      "items": ["Jenkins", "Argo CD", "GitHub Actions", "GitOps"]
     },
     {
       "category": "Infrastructure as Code",
@@ -156,6 +156,10 @@
     {
       "category": "Programming & Scripting",
       "items": ["Python", "Bash Script"]
+    },
+    {
+      "category": "Key Practices",
+      "items": ["High Availability", "Disaster Recovery", "Cost Optimization", "DevSecOps", "Microservices", "RBAC"]
     }
   ],
   "training": [

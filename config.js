@@ -99,11 +99,13 @@ const CONFIG = {
     {
       category: 'Cloud & Infrastructure',
       items: [
-        { name: 'AWS',        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
-        { name: 'Kubernetes', icon: 'https://cdn.simpleicons.org/kubernetes' },
-        { name: 'Terraform',  icon: 'https://cdn.simpleicons.org/terraform' },
-        { name: 'Ansible',    icon: 'https://cdn.simpleicons.org/ansible' },
-        { name: 'Helm',       icon: 'https://cdn.simpleicons.org/helm' },
+        { name: 'AWS',          icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
+        { name: 'Oracle Cloud', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
+        { name: 'Kubernetes',   icon: 'https://cdn.simpleicons.org/kubernetes' },
+        { name: 'Terraform',    icon: 'https://cdn.simpleicons.org/terraform' },
+        { name: 'Terragrunt',   icon: 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120/https%3A%2F%2Fdashboard.snapcraft.io%2Fsite_media%2Fappmedia%2F2023%2F03%2Ficon_mz0QIIO.png' },
+        { name: 'Ansible',      icon: 'https://cdn.simpleicons.org/ansible' },
+        { name: 'Helm',         icon: 'https://cdn.simpleicons.org/helm' },
       ],
     },
     {
@@ -148,7 +150,7 @@ const CONFIG = {
 
   // ── Terminal command emoji mappings for skills ──────────
   terminalSkillEmojis: {
-    'Cloud & Infrastructure': ['☁  AWS', '⚙  Kubernetes', '🏗  Terraform', '📋 Ansible', '⚓ Helm'],
+    'Cloud & Infrastructure': ['☁  AWS', '🔶 Oracle Cloud', '⚙  Kubernetes', '🏗  Terraform', '🌿 Terragrunt', '📋 Ansible', '⚓ Helm'],
     'Containers & CI/CD':     ['🐋 Docker', '🔧 Jenkins', '🚢 ArgoCD', '⚡ GitHub Actions', '📦 Nexus', '🌐 Nginx'],
     'Observability':          ['📊 Prometheus', '📈 Grafana', '📝 Loki', '🔭 OpenTelemetry'],
     'Programming & Scripting':['🐍 Python', '💻 Bash'],

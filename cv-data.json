@@ -13,7 +13,7 @@
   "personal": {
     "name": "ABDELAZIZ OMAR",
     "title": "Senior DevOps Engineer",
-    "phone": "(+20) 01027588498",
+    "phone": "+20 1027588498",
     "email": "abdelazizomardev@gmail.com",
     "location": "Alexandria, Egypt",
     "location_note": "Open to Relocation",
@@ -31,11 +31,11 @@
       {
         "label": "Portfolio",
         "url": "https://abdelazizomar.com",
-        "display": "portfolio"
+        "display": "abdelazizomar.com"
       }
     ]
   },
-  "summary": "Senior DevOps Engineer specializing in infrastructure reliability, scalability, and security. Experienced in designing and automating CI/CD pipelines, managing cloud environments on AWS, and implementing GitOps and Infrastructure-as-Code practices at scale. Track record of reducing operational overhead, accelerating deployment frequency, and delivering highly available platforms across hybrid and cloud-native environments.",
+  "summary": "Senior DevOps Engineer specializing in infrastructure reliability, scalability, and security. Experienced in designing CI/CD pipelines, managing 20+ microservices on AWS EKS across hybrid cloud environments, and delivering GitOps and Infrastructure-as-Code solutions that reduce operational overhead and accelerate release frequency.",
   "experience": [
     {
       "title": "Senior DevOps Engineer",
@@ -47,7 +47,8 @@
         "Automated software configuration and deployments using Amazon EKS, Helm, Argo CD, GitHub Actions, and Terraform, enabling GitOps workflows across 3+ environments and accelerating release frequency by over 60%.",
         "Deployed and managed hybrid cloud infrastructure using Huawei Cloud and AWS Outposts, integrating on-premises and cloud workloads to support 10+ production services.",
         "Delivered resilient, highly available platforms through Infrastructure-as-Code (IaC) practices, reducing manual configuration by 70% and improving deployment consistency across teams.",
-        "Partnered with 5+ development teams to streamline CI/CD release pipelines and enforce DevOps best practices, cutting mean time to deployment and reducing rollback incidents."
+        "Investigated and resolved production issues in containerized environments, achieving 99.9% service availability and minimizing unplanned downtime.",
+        "Partnered with 5+ development teams to streamline CI/CD release pipelines and enforce DevOps best practices, reducing MTDD by ~30% and cutting rollback incidents by 50% across 3 release environments."
       ]
     },
     {
@@ -59,7 +60,6 @@
       "highlights": [
         "Implemented customer integrations and system automation using Ansible, Jenkins, Docker, and Linux, reducing deployment time by 50% and improving release reliability.",
         "Built and maintained CI/CD pipelines that reduced operational errors by 40% and standardized the software delivery process across multiple projects.",
-        "Investigated and resolved production issues in containerized environments, achieving 99.9% service availability and minimizing unplanned downtime.",
         "Automated 15+ repetitive infrastructure tasks using Bash and Ansible, reclaiming approximately 8 engineering hours per week."
       ]
     },
@@ -70,9 +70,7 @@
       "start": "08/2021",
       "end": "10/2022",
       "highlights": [
-        "Maintained and ensured 99% uptime for the company website, proactively resolving bugs before impacting end users.",
-        "Refactored legacy PHP/Laravel code, reducing technical debt and improving maintainability across key modules.",
-        "Optimized MySQL queries, reducing average page load time by 35% and improving overall application responsiveness."
+        "Built and maintained PHP/Laravel web applications; optimized MySQL queries, reducing average page load time by 35%."
       ]
     }
   ],
@@ -115,19 +113,19 @@
   "skills": [
     {
       "category": "Cloud Providers",
-      "items": ["AWS (EC2, EKS, S3, VPC, IAM, Outposts, CloudWatch, Lambda, SNS/SQS, API Gateway, Cost Explorer)", "Huawei Cloud"]
+      "items": ["AWS (EC2, EKS, S3, VPC, IAM, Outposts, CloudWatch, Lambda, SNS/SQS, API Gateway, Cost Explorer)", "Oracle Cloud"]
     },
     {
-      "category": "Containerization & Orchestration",
+      "category": "Containerization and Orchestration",
       "items": ["Docker", "Kubernetes", "Helm"]
     },
     {
-      "category": "CI/CD & GitOps",
+      "category": "CI/CD and GitOps",
       "items": ["Jenkins", "Argo CD", "GitHub Actions", "GitOps"]
     },
     {
       "category": "Infrastructure as Code",
-      "items": ["Terraform"]
+      "items": ["Terraform", "Terragrunt"]
     },
     {
       "category": "Configuration Management",
@@ -189,7 +187,7 @@
     },
     {
       "language": "English",
-      "level": "B1 - Intermediate"
+      "level": "B2 Upper-Intermediate"
     }
   ]
 }

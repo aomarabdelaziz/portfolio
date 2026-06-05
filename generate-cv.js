@@ -154,6 +154,22 @@ function renderTraining(training) {
 </section>`;
 }
 
+function renderProjects(projects) {
+  if (!projects || !projects.length) return '';
+  const items = projects.map(p => `
+  <div class="entry">
+    <div class="entry-left">
+      <h3><strong>${esc(p.name)}</strong>${p.url ? ` | <a href="${esc(p.url)}">${esc(p.url)}</a>` : ''}</h3>
+      <p class="entry-sub">${esc(p.description)}</p>
+      ${p.tech && p.tech.length ? `<p class="entry-sub"><em>${esc(p.tech.join(' · '))}</em></p>` : ''}
+    </div>
+  </div>`).join('\n');
+  return `
+<section>
+  <h2>PROJECTS</h2>${items}
+</section>`;
+}
+
 function renderLanguages(languages) {
   if (!languages || !languages.length) return '';
   const rows = languages.map(l =>
@@ -174,6 +190,7 @@ const RENDERERS = {
   education:      () => renderEducation(cv.education),
   certifications: () => renderCertifications(cv.certifications),
   skills:         () => renderSkills(cv.skills),
+  projects:       () => renderProjects(cv.projects),
   training:       () => renderTraining(cv.training),
   languages:      () => renderLanguages(cv.languages),
 };

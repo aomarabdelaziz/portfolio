@@ -188,7 +188,9 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px;">
         ${cat.items.map(s => `
           <div class="skill-item" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 12px;border-radius:12px;border:1px solid rgba(128,128,128,0.1);background:rgba(128,128,128,0.03);transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(var(--primary-rgb),0.35)';this.style.background='rgba(var(--primary-rgb),0.05)'" onmouseout="this.style.borderColor='rgba(128,128,128,0.1)';this.style.background='rgba(128,128,128,0.03)'">
-            <img src="${s.icon}" width="32" height="32" alt="${s.name}" loading="lazy" ${s.invert ? 'class="icon-invert"' : ''}/>
+            <div style="height:32px;display:flex;align-items:center;justify-content:center;">
+              <img src="${s.icon}" alt="${s.name}" loading="lazy" ${s.imgStyle ? `style="${s.imgStyle}"` : 'width="32" height="32"'} ${s.invert ? 'class="icon-invert"' : ''}/>
+            </div>
             <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;opacity:0.6;">${s.name}</span>
           </div>
         `).join('')}

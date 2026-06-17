@@ -451,6 +451,7 @@ function buildResumeHTML() {
   <title>${esc(p.name)} — Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>${CV_CSS}${TOOLBAR_CSS}${PRINT_OVERRIDE}</style>
   <script type="application/ld+json">
 ${buildJsonLd()}
@@ -472,7 +473,7 @@ ${buildJsonLd()}
 
   <div id="tb-center">${esc(p.name)} — Resume</div>
 
-  <button class="tb-pdf" onclick="window.print()">
+  <button class="tb-pdf" onclick="downloadPDF()">
     <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path stroke-linecap="round" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/>
     </svg>
@@ -487,6 +488,31 @@ ${buildJsonLd()}
   </div>
 </div>
 
+<script>
+function downloadPDF() {
+  var wrap  = document.querySelector('.cv-wrap');
+  var stage = document.getElementById('cv-stage');
+  var prevWrap  = wrap.style.cssText;
+  var prevStage = stage.style.cssText;
+
+  // Mirror @media print + @page: strip cv-wrap padding, flatten layout
+  stage.style.cssText = 'padding:0;display:block;background:#fff;';
+  wrap.style.cssText  = 'padding:0;max-width:none;width:100%;box-shadow:none;border-radius:0;margin:0;';
+
+  var opt = {
+    margin:      [20, 25, 20, 25],
+    filename:    'Abdelaziz-Omar-Resume.pdf',
+    image:       { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: -window.scrollY },
+    jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(wrap).save().then(function() {
+    wrap.style.cssText  = prevWrap;
+    stage.style.cssText = prevStage;
+  });
+}
+</script>
 </body>
 </html>`;
 }

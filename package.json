@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "cv": "node generate-cv.js",
-    "cv:pdf": "node generate-cv.js --pdf"
+    "cv": "node generate-cv.js"
   },
   "dependencies": {
     "docx": "^9.6.1"
